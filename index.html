@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TermuxAI — Claude Code + Ollama on Android</title>
-  <meta name="description" content="Run Claude Code with Ollama cloud models directly in Termux on your Android device. Full AI coding environment in your pocket.">
+  <title>Install Claude Code In Termux Using Ollama</title>
+  <meta name="description" content="A lightweight setup to turn your Android device into a local AI-powered coding environment using Termux, Ollama, and Claude Code.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -436,12 +436,12 @@
   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#06060ecc] border-b border-[var(--border)]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
       <a href="#" class="font-display text-lg sm:text-xl font-bold tracking-wider">
-        <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--text)]">AI</span>
+        <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--green)]">Ollama</span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm text-[var(--text-dim)]">
         <a href="#setup" class="hover:text-[var(--cyan)] transition-colors">Setup</a>
-        <a href="#features" class="hover:text-[var(--cyan)] transition-colors">Features</a>
-        <a href="#models" class="hover:text-[var(--cyan)] transition-colors">Models</a>
+        <a href="#architecture" class="hover:text-[var(--cyan)] transition-colors">Architecture</a>
+        <a href="#troubleshoot" class="hover:text-[var(--cyan)] transition-colors">Troubleshoot</a>
       </div>
       <a href="#setup" class="cta-btn cta-primary text-xs sm:text-sm py-2 px-4 sm:py-3 sm:px-6">
         Get Started
@@ -456,17 +456,22 @@
         <!-- Badge -->
         <div class="stagger-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-xs text-[var(--cyan)] mb-6" style="animation-delay: 0.1s;">
           <span class="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse"></span>
-          Now Available on Termux
+          Kimi K2.5 Cloud Model
         </div>
 
         <!-- Heading -->
         <h1 class="stagger-in font-display text-4xl sm:text-5xl md:text-7xl font-900 leading-tight mb-6" style="animation-delay: 0.2s;">
-          <span class="text-[var(--text)]">AI Coding</span><br>
-          <span class="glow-cyan text-[var(--cyan)]">In Your Pocket</span>
+          <span class="text-[var(--text)]">Install Claude Code</span><br>
+          <span class="glow-cyan text-[var(--cyan)]">In Termux Using Ollama</span>
         </h1>
 
+        <!-- Banner Image -->
+        <div class="stagger-in max-w-3xl mx-auto mb-8" style="animation-delay: 0.25s;">
+          <img src="https://github.com/Johndevils/claude-code-termux/raw/main/Claude-Code.jpg" alt="Claude Code Banner" class="w-full rounded-xl border border-[var(--border)] shadow-2xl">
+        </div>
+
         <p class="stagger-in max-w-xl mx-auto text-sm sm:text-base text-[var(--text-dim)] mb-8 leading-relaxed" style="animation-delay: 0.3s;">
-          Run <span class="text-[var(--cyan)]">Claude Code</span> with <span class="text-[var(--green)]">Ollama</span> models directly on your Android device via Termux. Full AI-powered development environment — no cloud required.
+          A lightweight setup to turn your Android device into an <span class="text-[var(--cyan)]">AI-powered coding environment</span> using <span class="text-[var(--green)]">Termux</span>, <span class="text-[var(--green)]">Ollama</span>, and <span class="text-[var(--purple)]">Claude Code</span>.
         </p>
 
         <!-- CTA -->
@@ -490,10 +495,12 @@
               <span class="text-[10px] text-[var(--text-dim)] ml-2 font-mono">termux ~ claude-code</span>
             </div>
             <div class="terminal-body text-left">
-              <div class="text-[var(--text-dim)]">$ <span class="text-[var(--green)]">claude</span></div>
-              <div class="mt-2 text-[var(--cyan)]">Welcome to Claude Code v4.6</div>
-              <div class="text-[var(--text-dim)]">Model: <span class="text-[var(--green)]">ollama/codestral</span></div>
-              <div class="text-[var(--text-dim)]">Context: <span class="text-[var(--amber)]">128k tokens</span></div>
+              <div class="text-[var(--text-dim)]">$ <span class="text-[var(--green)]">ollama serve</span></div>
+              <div class="mt-1 text-[var(--cyan)]">Ollama running on :11434</div>
+              <div class="mt-2 text-[var(--text-dim)]">$ <span class="text-[var(--green)]">claude --model kimi-k2.5:cloud</span></div>
+              <div class="mt-1 text-[var(--purple)]">Welcome to Claude Code</div>
+              <div class="text-[var(--text-dim)]">Model: <span class="text-[var(--green)]">kimi-k2.5:cloud</span></div>
+              <div class="text-[var(--text-dim)]">Backend: <span class="text-[var(--amber)]">Ollama :11434</span></div>
               <div class="mt-2 text-[var(--text-dim)]">> How do I implement a REST API in Node.js?<span class="cursor"></span></div>
             </div>
           </div>
@@ -507,9 +514,25 @@
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12 reveal">
         <h2 class="font-display text-2xl sm:text-4xl font-bold mb-4">
-          <span class="text-[var(--cyan)] glow-cyan">Setup</span> <span class="text-[var(--text)]">Guide</span>
+          <span class="text-[var(--cyan)] glow-cyan">Installation</span> <span class="text-[var(--text)]">Guide</span>
         </h2>
-        <p class="text-sm text-[var(--text-dim)]">Copy, paste, done. Get running in under 5 minutes.</p>
+        <p class="text-sm text-[var(--text-dim)]">Copy, paste, done. Get running in minutes.</p>
+      </div>
+
+      <!-- Requirements -->
+      <div class="reveal mb-12 p-5 rounded-xl border border-[var(--amber)] bg-[rgba(255,184,0,0.04)]">
+        <h3 class="font-display text-sm font-bold text-[var(--amber)] mb-3">Requirements</h3>
+        <div class="flex flex-col sm:flex-row gap-3 text-xs text-[var(--text-dim)]">
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Android phone (4GB+ RAM recommended)</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Stable internet</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Termux (from F-Droid)</span>
+        </div>
+      </div>
+
+      <!-- Part 1 Header -->
+      <div class="reveal mb-6">
+        <span class="font-display text-sm font-bold text-[var(--green)] glow-green">Part 1</span>
+        <span class="text-[var(--text-dim)] text-sm ml-2">— Install Ollama (Termux)</span>
       </div>
 
       <!-- Step 1 -->
@@ -518,8 +541,8 @@
           <div class="step-num">01</div>
         </div>
         <div class="flex-1">
-          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Install Termux</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Get the latest Termux from F-Droid (recommended over Play Store).</p>
+          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Update & Install Dependencies</h3>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Update Termux packages and install required dependencies.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -536,6 +559,10 @@
                 <code class="cmd-text"><span class="cmd-prefix">$</span>pkg install git nodejs-lts python -y</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
+              <div class="cmd-block">
+                <code class="cmd-text"><span class="cmd-prefix">$</span>pkg install ollama</code>
+                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+              </div>
             </div>
           </div>
         </div>
@@ -547,8 +574,8 @@
           <div class="step-num">02</div>
         </div>
         <div class="flex-1">
-          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Install Ollama</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Set up Ollama to run models locally or connect to a cloud instance.</p>
+          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Start Ollama Server</h3>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Launch the Ollama LLM server on port 11434.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -558,15 +585,7 @@
             </div>
             <div class="terminal-body">
               <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>curl -fsSL https://ollama.com/install.sh | sh</code>
-                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-              </div>
-              <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>ollama serve &</code>
-                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-              </div>
-              <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>ollama pull codestral</code>
+                <code class="cmd-text"><span class="cmd-prefix">$</span>ollama serve</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
             </div>
@@ -577,11 +596,43 @@
       <!-- Step 3 -->
       <div class="reveal flex gap-4 sm:gap-6 mb-8">
         <div>
-          <div class="step-num" style="border-color:var(--green);color:var(--green);box-shadow:var(--glow-green);">03</div>
+          <div class="step-num" style="border-color:var(--purple);color:var(--purple);box-shadow:var(--glow-purple);">03</div>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Download Kimi Model</h3>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Pull the Kimi K2.5 cloud model. Requires strong internet connection.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f57;"></div>
+              <div class="terminal-dot" style="background:#febc2e;"></div>
+              <div class="terminal-dot" style="background:#28c840;"></div>
+              <span class="text-[10px] text-[var(--text-dim)] ml-2">termux</span>
+            </div>
+            <div class="terminal-body">
+              <div class="cmd-block">
+                <code class="cmd-text"><span class="cmd-prefix">$</span>ollama pull kimi-k2.5:cloud</code>
+                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+              </div>
+              <div class="mt-2 text-[var(--amber)] text-xs">&#9888; Requires strong internet (cloud model)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2 Header -->
+      <div class="reveal mb-6 mt-4">
+        <span class="font-display text-sm font-bold text-[var(--purple)] glow-purple">Part 2</span>
+        <span class="text-[var(--text-dim)] text-sm ml-2">— Install Claude Code (Termux)</span>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="reveal flex gap-4 sm:gap-6 mb-8">
+        <div>
+          <div class="step-num" style="border-color:var(--green);color:var(--green);box-shadow:var(--glow-green);">04</div>
         </div>
         <div class="flex-1">
           <h3 class="font-display text-base sm:text-lg font-bold mb-2">Install Claude Code</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Install the Anthropic CLI and configure it with your API key.</p>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Install the Anthropic CLI globally via npm.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -592,39 +643,6 @@
             <div class="terminal-body">
               <div class="cmd-block">
                 <code class="cmd-text"><span class="cmd-prefix">$</span>npm install -g @anthropic-ai/claude-code</code>
-                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-              </div>
-              <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>export ANTHROPIC_API_KEY=sk-ant-...</code>
-                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-8">
-        <div>
-          <div class="step-num" style="border-color:var(--purple);color:var(--purple);box-shadow:var(--glow-purple);">04</div>
-        </div>
-        <div class="flex-1">
-          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Connect Ollama to Claude Code</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Configure Claude Code to use Ollama as a model provider.</p>
-          <div class="terminal">
-            <div class="terminal-bar">
-              <div class="terminal-dot" style="background:#ff5f57;"></div>
-              <div class="terminal-dot" style="background:#febc2e;"></div>
-              <div class="terminal-dot" style="background:#28c840;"></div>
-              <span class="text-[10px] text-[var(--text-dim)] ml-2">termux</span>
-            </div>
-            <div class="terminal-body">
-              <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>claude config set model ollama:codestral</code>
-                <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-              </div>
-              <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>claude config set ollamaBaseUrl http://localhost:11434</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
             </div>
@@ -638,8 +656,8 @@
           <div class="step-num" style="border-color:var(--amber);color:var(--amber);box-shadow:0 0 20px rgba(255,184,0,0.3);">05</div>
         </div>
         <div class="flex-1">
-          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Launch & Code</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">You're ready. Start coding with AI assistance.</p>
+          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Configure Ollama Connection</h3>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">Set environment variables to connect Claude Code to Ollama.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -649,187 +667,180 @@
             </div>
             <div class="terminal-body">
               <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>mkdir my-project && cd my-project</code>
+                <code class="cmd-text"><span class="cmd-prefix">$</span>echo -e '\n# Claude Code with Ollama Config\nexport ANTHROPIC_BASE_URL="http://localhost:11434"\nexport ANTHROPIC_AUTH_TOKEN="ollama"' >> ~/.bashrc && source ~/.bashrc</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="reveal flex gap-4 sm:gap-6 mb-8">
+        <div>
+          <div class="step-num" style="border-color:var(--pink);color:var(--pink);box-shadow:0 0 20px rgba(255,0,128,0.3);">06</div>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-display text-base sm:text-lg font-bold mb-2">Run Claude Code with Kimi</h3>
+          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-3">You're ready. Launch Claude Code with the Kimi model.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background:#ff5f57;"></div>
+              <div class="terminal-dot" style="background:#febc2e;"></div>
+              <div class="terminal-dot" style="background:#28c840;"></div>
+              <span class="text-[10px] text-[var(--text-dim)] ml-2">termux</span>
+            </div>
+            <div class="terminal-body">
               <div class="cmd-block">
-                <code class="cmd-text"><span class="cmd-prefix">$</span>claude</code>
+                <code class="cmd-text"><span class="cmd-prefix">$</span>claude --model kimi-k2.5:cloud</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
               <div class="mt-3 text-[var(--cyan)] text-xs">
-                &#10003; Connected to ollama:codestral<br>
-                &#10003; Context window: 128k tokens<br>
+                &#10003; Connected to Ollama :11434<br>
+                &#10003; Model: kimi-k2.5:cloud<br>
                 &#10003; Ready to code<span class="cursor"></span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- One-liner install -->
-      <div class="reveal mt-12 p-6 sm:p-8 rounded-2xl border border-[var(--cyan)] bg-[rgba(0,240,255,0.03)]">
-        <div class="text-center mb-4">
-          <span class="font-display text-sm font-bold text-[var(--cyan)] glow-cyan">QUICK INSTALL</span>
-          <p class="text-xs text-[var(--text-dim)] mt-1">One command to rule them all</p>
-        </div>
-        <div class="cmd-block" style="border-color:rgba(0,240,255,0.25);background:rgba(0,240,255,0.06);">
-          <code class="cmd-text text-xs sm:text-sm"><span class="cmd-prefix">$</span>pkg update && pkg upgrade -y && pkg install git nodejs-lts -y && npm i -g @anthropic-ai/claude-code && curl -fsSL https://ollama.com/install.sh | sh</code>
-          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section id="features" class="py-16 sm:py-24 px-4 sm:px-6 relative">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12 reveal">
-        <h2 class="font-display text-2xl sm:text-4xl font-bold mb-4">
-          <span class="text-[var(--green)] glow-green">Features</span>
-        </h2>
-        <p class="text-sm text-[var(--text-dim)]">Everything you need for AI-powered mobile development.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <!-- Feature 1 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Mobile-First Dev</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Full coding environment on Android. Code anywhere, anytime from your phone.</p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Local AI Models</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Run Ollama models locally — zero latency, zero data sent to the cloud.</p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Blazing Fast</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Optimized for ARM devices. Code generation at your fingertips, instantly.</p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Privacy First</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Local models mean your code never leaves your device. Full data sovereignty.</p>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Auto Config</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">One-click setup scripts. No manual configuration headaches.</p>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="feature-card reveal">
-          <div class="text-3xl mb-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-          </div>
-          <h3 class="font-display text-sm font-bold mb-2 text-[var(--text)]">Multi-Model</h3>
-          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Switch between Claude, Codestral, DeepSeek, Llama, and more — seamlessly.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODELS -->
-  <section id="models" class="py-16 sm:py-24 px-4 sm:px-6">
+  <!-- ARCHITECTURE -->
+  <section id="architecture" class="py-16 sm:py-24 px-4 sm:px-6 relative">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12 reveal">
         <h2 class="font-display text-2xl sm:text-4xl font-bold mb-4">
-          <span class="text-[var(--purple)] glow-purple">Supported</span> <span class="text-[var(--text)]">Models</span>
+          <span class="text-[var(--green)] glow-green">Architecture</span> <span class="text-[var(--text)]">Overview</span>
         </h2>
-        <p class="text-sm text-[var(--text-dim)]">Pull any model and start coding. Zero friction.</p>
+        <p class="text-sm text-[var(--text-dim)]">How the pieces connect on your phone.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal">
-        <!-- Model cards -->
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(0,240,255,0.1)] text-[var(--cyan)] mt-1">7B</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">Codestral</h4>
-            <p class="text-xs text-[var(--text-dim)]">Mistral's code model. Best for general coding tasks.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>ollama pull codestral</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
+      <!-- Architecture diagram -->
+      <div class="reveal terminal mb-10">
+        <div class="terminal-bar">
+          <div class="terminal-dot" style="background:#ff5f57;"></div>
+          <div class="terminal-dot" style="background:#febc2e;"></div>
+          <div class="terminal-dot" style="background:#28c840;"></div>
+          <span class="text-[10px] text-[var(--text-dim)] ml-2">system-diagram</span>
+        </div>
+        <div class="terminal-body text-sm leading-loose">
+          <div class="text-[var(--cyan)] font-bold">Termux</div>
+          <div class="text-[var(--text-dim)] ml-4">&#9500;&#8251; Ollama (LLM Server :11434)</div>
+          <div class="text-[var(--text-dim)] ml-4">&#9492;&#8251; Claude Code (AI CLI)</div>
+          <div class="mt-3 text-[var(--green)]">Claude Code &#8594; sends requests to Ollama</div>
+          <div class="text-[var(--text-dim)]">Entire system runs locally on your phone</div>
+        </div>
+      </div>
+
+      <!-- Usage -->
+      <div class="text-center mb-8 reveal">
+        <h2 class="font-display text-2xl sm:text-4xl font-bold mb-4">
+          <span class="text-[var(--purple)] glow-purple">Usage</span> <span class="text-[var(--text)]">Workflow</span>
+        </h2>
+      </div>
+
+      <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background:#ff5f57;"></div>
+            <div class="terminal-dot" style="background:#febc2e;"></div>
+            <div class="terminal-dot" style="background:#28c840;"></div>
+            <span class="text-[10px] text-[var(--text-dim)] ml-2">start ollama</span>
+          </div>
+          <div class="terminal-body">
+            <div class="text-xs text-[var(--text-dim)] mb-2">Start Ollama:</div>
+            <div class="cmd-block">
+              <code class="cmd-text"><span class="cmd-prefix">$</span>ollama serve</code>
+              <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
             </div>
           </div>
         </div>
 
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(0,255,136,0.1)] text-[var(--green)] mt-1">33B</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">DeepSeek Coder V2</h4>
-            <p class="text-xs text-[var(--text-dim)]">High-performance coding with strong reasoning.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>ollama pull deepseek-coder-v2</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background:#ff5f57;"></div>
+            <div class="terminal-dot" style="background:#febc2e;"></div>
+            <div class="terminal-dot" style="background:#28c840;"></div>
+            <span class="text-[10px] text-[var(--text-dim)] ml-2">run claude</span>
+          </div>
+          <div class="terminal-body">
+            <div class="text-xs text-[var(--text-dim)] mb-2">Run Claude Code:</div>
+            <div class="cmd-block">
+              <code class="cmd-text"><span class="cmd-prefix">$</span>claude --model kimi-k2.5:cloud</code>
+              <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(139,92,246,0.1)] text-[var(--purple)] mt-1">8B</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">Llama 3.1</h4>
-            <p class="text-xs text-[var(--text-dim)]">Meta's latest. Great all-rounder for coding & chat.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>ollama pull llama3.1</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
-            </div>
+      <!-- Important Notes -->
+      <div class="reveal p-5 rounded-xl border border-[var(--amber)] bg-[rgba(255,184,0,0.04)]">
+        <h3 class="font-display text-sm font-bold text-[var(--amber)] mb-3">Important Notes</h3>
+        <ul class="text-xs text-[var(--text-dim)] space-y-2">
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Keep Ollama running before using Claude Code</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> <code class="text-[var(--cyan)]">:cloud</code> models require internet (not fully offline)</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Performance depends on network + device</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Close background apps for stability</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section id="troubleshoot" class="py-16 sm:py-24 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <h2 class="font-display text-2xl sm:text-4xl font-bold mb-4">
+          <span class="text-[var(--pink)]">Troubleshooting</span>
+        </h2>
+        <p class="text-sm text-[var(--text-dim)]">Common issues and quick fixes.</p>
+      </div>
+
+      <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="feature-card">
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h3 class="font-display text-sm font-bold text-[var(--text)]">Claude Cannot Connect to Ollama</h3>
           </div>
+          <ul class="text-xs text-[var(--text-dim)] space-y-2">
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Ensure <code class="text-[var(--green)]">ollama serve</code> is running</li>
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Check port 11434 is accessible</li>
+          </ul>
         </div>
 
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(255,0,128,0.1)] text-[var(--pink)] mt-1">34B</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">CodeLlama</h4>
-            <p class="text-xs text-[var(--text-dim)]">Meta's code-specialized Llama. Solid for Python & JS.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>ollama pull codellama</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
-            </div>
+        <div class="feature-card">
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <h3 class="font-display text-sm font-bold text-[var(--text)]">Model Pull Fails</h3>
           </div>
+          <ul class="text-xs text-[var(--text-dim)] space-y-2">
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Check your internet connection</li>
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Retry with <code class="text-[var(--green)]">ollama pull kimi-k2.5:cloud</code></li>
+          </ul>
         </div>
 
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(255,184,0,0.1)] text-[var(--amber)] mt-1">7B</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">Qwen2.5-Coder</h4>
-            <p class="text-xs text-[var(--text-dim)]">Alibaba's code model. Excellent for web development.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>ollama pull qwen2.5-coder</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
-            </div>
+        <div class="feature-card">
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <h3 class="font-display text-sm font-bold text-[var(--text)]">Slow Performance</h3>
           </div>
+          <ul class="text-xs text-[var(--text-dim)] space-y-2">
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Close background apps for more RAM</li>
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Use a stable WiFi connection</li>
+          </ul>
         </div>
 
-        <div class="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] flex items-start gap-4">
-          <div class="model-badge bg-[rgba(0,240,255,0.1)] text-[var(--cyan)] mt-1">API</div>
-          <div class="flex-1">
-            <h4 class="text-sm font-bold mb-1">Claude (Cloud)</h4>
-            <p class="text-xs text-[var(--text-dim)]">Anthropic's most capable model. Requires API key.</p>
-            <div class="cmd-block mt-2" style="margin:8px 0 0;">
-              <code class="cmd-text text-xs"><span class="cmd-prefix">$</span>export ANTHROPIC_API_KEY=sk-...</code>
-              <button class="copy-btn text-[10px] py-1 px-2" onclick="copyCmd(this)">Copy</button>
-            </div>
+        <div class="feature-card">
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
+            <h3 class="font-display text-sm font-bold text-[var(--text)]">Claude Code Not Found</h3>
           </div>
+          <ul class="text-xs text-[var(--text-dim)] space-y-2">
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Ensure npm global bin is in your PATH</li>
+            <li class="flex items-start gap-2"><span class="text-[var(--cyan)]">&#10003;</span> Reinstall with <code class="text-[var(--green)]">npm i -g @anthropic-ai/claude-code</code></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -843,9 +854,9 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-[var(--cyan)] rounded-full filter blur-[120px] opacity-10 pointer-events-none"></div>
 
         <h2 class="font-display text-xl sm:text-3xl font-bold mb-4 relative">
-          Ready to Code <span class="text-[var(--cyan)] glow-cyan">Smarter</span>?
+          Ready to Code <span class="text-[var(--cyan)] glow-cyan">with Kimi</span>?
         </h2>
-        <p class="text-sm text-[var(--text-dim)] mb-8 relative">Join thousands of developers coding with AI on their phones.</p>
+        <p class="text-sm text-[var(--text-dim)] mb-8 relative">Turn your Android into an AI-powered coding machine.</p>
         <div class="relative">
           <a href="#setup" class="cta-btn cta-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
@@ -860,12 +871,12 @@
   <footer class="border-t border-[var(--border)] py-8 sm:py-12 px-4 sm:px-6">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="font-display text-sm font-bold">
-        <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--text-dim)]">AI</span>
+        <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--green)]">Ollama</span>
       </div>
       <div class="flex items-center gap-6 text-xs text-[var(--text-dim)]">
         <a href="https://github.com/Johndevils" target="_blank" rel="noopener" class="hover:text-[var(--cyan)] transition-colors">GitHub</a>
-        <a href="#setup" class="hover:text-[var(--cyan)] transition-colors">Docs</a>
-        <a href="#features" class="hover:text-[var(--cyan)] transition-colors">Features</a>
+        <a href="#setup" class="hover:text-[var(--cyan)] transition-colors">Setup</a>
+        <a href="#troubleshoot" class="hover:text-[var(--cyan)] transition-colors">Troubleshoot</a>
       </div>
       <div class="text-xs text-[var(--text-dim)]">
         &copy; 2026 Arsynox. Open source.

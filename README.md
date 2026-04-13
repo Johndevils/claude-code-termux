@@ -1,70 +1,118 @@
-# TermuxAI — Claude Code + Ollama on Android
+# Install Claude Code In Termux Using Ollama
 
-> Run AI-powered coding tools directly on your Android device. No cloud required.
+![Claude Code Banner](https://github.com/Johndevils/claude-code-termux/raw/main/Claude-Code.jpg)
+
+> A lightweight setup to turn your Android device into a local AI-powered coding environment using Termux.
 
 Live site: [claude-code-termux](https://johndevils.github.io/claude-code-termux/)
 
 ---
 
-## What is this?
+## Overview
 
-A cyberpunk-themed landing page for setting up **Claude Code** with **Ollama** models in **Termux** on Android. Full AI development environment in your pocket.
+You will build:
 
-## Quick Start
+- **Termux** → Linux environment on Android
+- **Ollama** → Local AI model server
+- **Claude Code** → AI coding assistant
 
-```bash
-# One-liner install
-pkg update && pkg upgrade -y && pkg install git nodejs-lts -y && npm i -g @anthropic-ai/claude-code && curl -fsSL https://ollama.com/install.sh | sh
-```
+## Requirements
 
-## Step-by-Step Setup
+- Android phone (4GB+ RAM recommended)
+- Stable internet
+- Termux (from F-Droid)
 
-### 1. Install Termux Dependencies
+---
+
+## Installation
+
+### Part 1 — Install Ollama (Termux)
+
+1. Update and install dependencies
 
 ```bash
 pkg update && pkg upgrade -y
 pkg install git nodejs-lts python -y
+pkg install ollama
 ```
 
-### 2. Install Ollama
+2. Start Ollama server
 
 ```bash
-curl -fsSL https://ollama.com/install.sh | sh
-ollama serve &
-ollama pull codestral
+ollama serve
 ```
 
-### 3. Install Claude Code
+3. Download Kimi model
+
+> Requires strong internet (cloud model).
+
+```bash
+ollama pull kimi-k2.5:cloud
+```
+
+### Part 2 — Install Claude Code (Termux)
+
+1. Install Claude Code
 
 ```bash
 npm install -g @anthropic-ai/claude-code
-export ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-### 4. Connect Ollama to Claude Code
+2. Configure connection to Ollama
 
 ```bash
-claude config set model ollama:codestral
-claude config set ollamaBaseUrl http://localhost:11434
+echo -e '\n# Claude Code with Ollama Config\nexport ANTHROPIC_BASE_URL="http://localhost:11434"\nexport ANTHROPIC_AUTH_TOKEN="ollama"' >> ~/.bashrc && source ~/.bashrc
 ```
 
-### 5. Launch
+3. Run Claude Code with Kimi
 
 ```bash
-mkdir my-project && cd my-project
-claude
+claude --model kimi-k2.5:cloud
 ```
 
-## Supported Models
+---
 
-| Model | Size | Best For |
-|-------|------|----------|
-| Codestral | 7B | General coding |
-| DeepSeek Coder V2 | 33B | Strong reasoning |
-| Llama 3.1 | 8B | All-rounder |
-| CodeLlama | 34B | Python & JS |
-| Qwen2.5-Coder | 7B | Web development |
-| Claude (API) | Cloud | Most capable |
+## System Workflow
+
+```
+Termux
+ ├── Ollama (LLM Server :11434)
+ └── Claude Code (AI CLI)
+
+Claude Code → sends requests to Ollama
+Entire system runs locally on your phone
+```
+
+## Usage
+
+Start Ollama:
+
+```bash
+ollama serve
+```
+
+Run Claude Code:
+
+```bash
+claude --model kimi-k2.5:cloud
+```
+
+---
+
+## Important Notes
+
+- Keep Ollama running before using Claude Code
+- `:cloud` models require internet (not fully offline)
+- Performance depends on network + device
+- Close background apps for stability
+
+## Troubleshooting
+
+**Claude cannot connect to Ollama**
+- Ensure `ollama serve` is running
+- Check port 11434
+
+---
 
 ## Tech Stack
 
