@@ -119,7 +119,7 @@
 
     .terminal-bar {
       background: rgba(15, 15, 35, 0.8);
-      padding: 12px 16px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -130,11 +130,12 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .terminal-body {
-      padding: 20px;
-      font-size: 13px;
+      padding: 16px;
+      font-size: 12px;
       line-height: 1.9;
       overflow-x: auto;
     }
@@ -144,36 +145,36 @@
       background: rgba(0, 229, 255, 0.03);
       border: 1px solid rgba(0, 229, 255, 0.08);
       border-radius: 10px;
-      padding: 14px 16px;
+      padding: 10px 12px;
       margin: 8px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cmd-block:hover {
       border-color: rgba(0, 229, 255, 0.2);
       background: rgba(0, 229, 255, 0.06);
-      transform: translateX(4px);
     }
 
     .cmd-text {
       color: var(--green);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 11px;
       white-space: nowrap;
       overflow-x: auto;
       flex: 1;
       scrollbar-width: none;
+      min-width: 0;
     }
 
     .cmd-text::-webkit-scrollbar { display: none; }
 
     .cmd-prefix {
       color: var(--cyan);
-      margin-right: 8px;
+      margin-right: 6px;
       user-select: none;
     }
 
@@ -182,17 +183,18 @@
       background: rgba(0, 229, 255, 0.08);
       border: 1px solid rgba(0, 229, 255, 0.15);
       color: var(--cyan);
-      padding: 6px 16px;
+      padding: 5px 12px;
       border-radius: 8px;
-      font-size: 11px;
+      font-size: 10px;
       cursor: pointer;
       font-family: 'JetBrains Mono', monospace;
       transition: all 0.25s;
       white-space: nowrap;
       flex-shrink: 0;
+      touch-action: manipulation;
     }
 
-    .copy-btn:hover {
+    .copy-btn:hover, .copy-btn:active {
       background: rgba(0, 229, 255, 0.15);
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
     }
@@ -207,7 +209,7 @@
     .cursor {
       display: inline-block;
       width: 2px;
-      height: 16px;
+      height: 14px;
       background: var(--cyan);
       margin-left: 2px;
       animation: blink 1s step-end infinite;
@@ -220,14 +222,14 @@
 
     /* Step number */
     .step-num {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 12px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
       position: relative;
@@ -248,7 +250,7 @@
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 28px;
+      padding: 24px;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
@@ -278,8 +280,9 @@
     .cta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 32px;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
       border-radius: 14px;
       font-family: 'Inter', sans-serif;
       font-weight: 700;
@@ -290,6 +293,8 @@
       border: none;
       position: relative;
       overflow: hidden;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .cta-btn::before {
@@ -392,6 +397,7 @@
       z-index: 10000;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 8px 32px rgba(0, 255, 136, 0.15);
+      white-space: nowrap;
     }
 
     .toast.show {
@@ -459,6 +465,7 @@
       padding: 8px;
       border: none;
       background: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .hamburger span {
@@ -473,11 +480,7 @@
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
+    .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
     }
@@ -487,15 +490,17 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 70%;
-      max-width: 320px;
+      width: 75%;
+      max-width: 300px;
+      height: 100dvh;
       height: 100vh;
-      background: rgba(5, 5, 16, 0.95);
+      background: rgba(5, 5, 16, 0.97);
       backdrop-filter: blur(40px);
       z-index: 100;
-      padding: 80px 32px 32px;
+      padding: 72px 28px 32px;
       transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       border-left: 1px solid var(--border);
+      overflow-y: auto;
     }
 
     .mobile-menu.open { right: 0; }
@@ -516,17 +521,149 @@
     }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.2); }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      .cmd-block { padding: 12px; }
-      .cmd-text { font-size: 12px; }
-      .terminal-body { padding: 14px; font-size: 12px; }
-      .feature-card { padding: 20px; }
+    /* ========================
+       RESPONSIVE OVERRIDES
+       ======================== */
+
+    /* Mobile-first: make hero h1 readable on small screens */
+    .hero-h1 {
+      font-size: clamp(2rem, 9vw, 6rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    /* Terminal body scrollable on mobile */
+    .terminal-body {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* cmd-block: stack on tiny screens if needed */
+    @media (max-width: 400px) {
+      .cmd-block {
+        flex-wrap: wrap;
+      }
+      .cmd-text {
+        font-size: 10px;
+        width: 100%;
+      }
+      .copy-btn {
+        align-self: flex-end;
+        font-size: 9px;
+        padding: 4px 10px;
+      }
+    }
+
+    /* Step layout: tighter on mobile */
+    @media (max-width: 480px) {
+      .step-num {
+        width: 34px;
+        height: 34px;
+        font-size: 11px;
+        border-radius: 10px;
+      }
+      .terminal-body {
+        padding: 12px;
+        font-size: 11px;
+      }
+      .feature-card {
+        padding: 18px;
+      }
+    }
+
+    /* Medium tablets */
+    @media (min-width: 481px) and (max-width: 767px) {
+      .terminal-body {
+        padding: 14px;
+        font-size: 12px;
+      }
+    }
+
+    /* Ensure CTA buttons full-width on tiny mobile */
+    @media (max-width: 360px) {
+      .cta-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+    }
+
+    /* Stats bar: tighter text on tiny screens */
+    @media (max-width: 360px) {
+      .stats-label {
+        font-size: 8px;
+        letter-spacing: 0.05em;
+      }
+      .stats-value {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Feature grid: single col on mobile, 2 col on sm+ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    /* Troubleshooting grid */
+    .trouble-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .trouble-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* Daily usage grid */
+    .usage-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .usage-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* Prevent overflow on entire page */
+    section, header, footer, nav {
+      max-width: 100vw;
+    }
+
+    /* Image responsive */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* Reduced motion */
@@ -535,6 +672,19 @@
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
+    }
+
+    /* Desktop nav: only visible on md+ */
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+    }
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+    }
+
+    /* "Get Started" nav button: show on sm+ only */
+    @media (max-width: 479px) {
+      .nav-cta-btn { display: none; }
     }
   </style>
 </head>
@@ -545,9 +695,9 @@
 
   <!-- Gradient mesh -->
   <div class="mesh-bg">
-    <div class="mesh-blob" style="width:600px;height:600px;background:var(--cyan);top:-200px;right:-150px;animation-delay:0s;"></div>
-    <div class="mesh-blob" style="width:500px;height:500px;background:var(--purple);bottom:-100px;left:-200px;animation-delay:-5s;"></div>
-    <div class="mesh-blob" style="width:400px;height:400px;background:var(--pink);top:50%;left:50%;animation-delay:-10s;"></div>
+    <div class="mesh-blob" style="width:500px;height:500px;background:var(--cyan);top:-200px;right:-150px;animation-delay:0s;"></div>
+    <div class="mesh-blob" style="width:400px;height:400px;background:var(--purple);bottom:-100px;left:-200px;animation-delay:-5s;"></div>
+    <div class="mesh-blob" style="width:350px;height:350px;background:var(--pink);top:50%;left:50%;animation-delay:-10s;"></div>
   </div>
 
   <!-- Toast -->
@@ -558,36 +708,40 @@
 
   <!-- Mobile menu -->
   <nav id="mobileMenu" class="mobile-menu">
-    <div class="flex flex-col gap-6">
-      <a href="#setup" class="text-lg font-medium text-[var(--text)] hover:text-[var(--cyan)] transition-colors" onclick="closeMobileMenu()">Setup</a>
-      <a href="#architecture" class="text-lg font-medium text-[var(--text)] hover:text-[var(--cyan)] transition-colors" onclick="closeMobileMenu()">Architecture</a>
-      <a href="#troubleshoot" class="text-lg font-medium text-[var(--text)] hover:text-[var(--cyan)] transition-colors" onclick="closeMobileMenu()">Troubleshoot</a>
+    <div class="flex flex-col gap-5">
+      <a href="#setup" class="text-base font-semibold text-[var(--text)] hover:text-[var(--cyan)] transition-colors py-1" onclick="closeMobileMenu()">Setup</a>
+      <a href="#features" class="text-base font-semibold text-[var(--text)] hover:text-[var(--cyan)] transition-colors py-1" onclick="closeMobileMenu()">Features</a>
+      <a href="#architecture" class="text-base font-semibold text-[var(--text)] hover:text-[var(--cyan)] transition-colors py-1" onclick="closeMobileMenu()">Architecture</a>
+      <a href="#troubleshoot" class="text-base font-semibold text-[var(--text)] hover:text-[var(--cyan)] transition-colors py-1" onclick="closeMobileMenu()">Troubleshoot</a>
       <div class="h-[1px] bg-[var(--border)] my-2"></div>
-      <a href="#setup" class="cta-btn cta-primary justify-center" onclick="closeMobileMenu()">Get Started</a>
+      <a href="#setup" class="cta-btn cta-primary" onclick="closeMobileMenu()">Get Started</a>
     </div>
   </nav>
 
   <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-[rgba(5,5,16,0.7)] border-b border-[var(--border)]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--cyan)] to-[var(--green)] flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-[rgba(5,5,16,0.75)] border-b border-[var(--border)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-2 flex-shrink-0">
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[var(--cyan)] to-[var(--green)] flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         </div>
-        <span class="font-bold text-lg tracking-tight">
+        <span class="font-bold text-base tracking-tight">
           <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--green)]">Ollama</span>
         </span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-[var(--text-dim)]">
+
+      <div class="desktop-nav hidden md:flex items-center gap-6 text-sm text-[var(--text-dim)]">
         <a href="#setup" class="nav-link hover:text-[var(--text)] transition-colors">Setup</a>
+        <a href="#features" class="nav-link hover:text-[var(--text)] transition-colors">Features</a>
         <a href="#architecture" class="nav-link hover:text-[var(--text)] transition-colors">Architecture</a>
         <a href="#troubleshoot" class="nav-link hover:text-[var(--text)] transition-colors">Troubleshoot</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#setup" class="hidden sm:inline-flex cta-btn cta-primary text-xs py-2 px-5">
+
+      <div class="flex items-center gap-2">
+        <a href="#setup" class="nav-cta-btn hidden sm:inline-flex cta-btn cta-primary text-xs py-2 px-4">
           Get Started
         </a>
-        <button class="hamburger md:hidden" onclick="toggleMobileMenu()" aria-label="Menu">
+        <button class="hamburger md:hidden" onclick="toggleMobileMenu()" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -595,61 +749,64 @@
   </nav>
 
   <!-- HERO -->
-  <header class="relative pt-28 sm:pt-36 pb-20 sm:pb-32 px-4 sm:px-6">
+  <header class="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center">
         <!-- Badge -->
-        <div class="stagger-in inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-sm text-xs text-[var(--cyan)] mb-8" style="animation-delay: 0.1s;">
-          <span class="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse"></span>
-          Claude Code
+        <div class="stagger-in inline-flex items-center gap-2 px-4 py-2 rounded-full glass-sm text-xs text-[var(--cyan)] mb-6" style="animation-delay: 0.1s;">
+          <span class="w-2 h-2 rounded-full bg-[var(--green)] animate-pulse flex-shrink-0"></span>
+          Claude Code × Ollama × Termux
         </div>
 
         <!-- Heading -->
-        <h1 class="stagger-in text-5xl sm:text-6xl md:text-8xl font-black leading-[1.05] mb-8 tracking-tight" style="animation-delay: 0.2s;">
+        <h1 class="stagger-in hero-h1 mb-6" style="animation-delay: 0.2s;">
           <span class="text-[var(--text)]">Install Claude Code</span><br>
           <span class="gradient-text">In Termux Using Ollama</span>
         </h1>
 
         <!-- Banner Image -->
-        <div class="stagger-in max-w-3xl mx-auto mb-10" style="animation-delay: 0.25s;">
+        <div class="stagger-in max-w-2xl mx-auto mb-8" style="animation-delay: 0.25s;">
           <div class="relative rounded-2xl overflow-hidden border border-[var(--border)] shadow-2xl shadow-[rgba(0,229,255,0.08)]">
-            <img src="https://github.com/Johndevils/claude-code-termux/raw/main/Claude-Code.jpg" alt="Claude Code Banner" class="w-full">
+            <img src="https://github.com/Johndevils/claude-code-termux/raw/main/Claude-Code.jpg"
+                 alt="Claude Code Banner"
+                 loading="lazy"
+                 onerror="this.parentElement.style.display='none'">
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-deep)] via-transparent to-transparent opacity-40"></div>
           </div>
         </div>
 
-        <p class="stagger-in max-w-2xl mx-auto text-base sm:text-lg text-[var(--text-dim)] mb-10 leading-relaxed font-light" style="animation-delay: 0.3s;">
+        <p class="stagger-in max-w-xl mx-auto text-sm sm:text-base text-[var(--text-dim)] mb-8 leading-relaxed font-light" style="animation-delay: 0.3s;">
           A lightweight setup to turn your Android device into an <span class="text-[var(--cyan)] font-medium">AI-powered coding environment</span> using <span class="text-[var(--green)] font-medium">Termux</span>, <span class="text-[var(--green)] font-medium">Ollama</span>, and <span class="text-[var(--purple)] font-medium">Claude Code</span>.
         </p>
 
-        <!-- CTA -->
-        <div class="stagger-in flex flex-col sm:flex-row items-center justify-center gap-4 mb-16" style="animation-delay: 0.4s;">
-          <a href="#setup" class="cta-btn cta-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <!-- CTA buttons -->
+        <div class="stagger-in flex flex-col sm:flex-row items-center justify-center gap-3 mb-12" style="animation-delay: 0.4s;">
+          <a href="#setup" class="cta-btn cta-primary w-full sm:w-auto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             Install Now
           </a>
-          <a href="#features" class="cta-btn cta-secondary">
+          <a href="#features" class="cta-btn cta-secondary w-full sm:w-auto">
             Learn More
           </a>
         </div>
 
         <!-- Hero Terminal -->
-        <div class="stagger-in max-w-2xl mx-auto" style="animation-delay: 0.5s;">
-          <div class="hero-terminal terminal">
+        <div class="stagger-in max-w-lg mx-auto" style="animation-delay: 0.5s;">
+          <div class="hero-terminal terminal text-left">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
               <div class="terminal-dot" style="background:#febc2e;"></div>
               <div class="terminal-dot" style="background:#28c840;"></div>
               <span class="text-[10px] text-[var(--text-dim)] ml-2 font-mono">termux ~ claude-code</span>
             </div>
-            <div class="terminal-body text-left font-mono">
+            <div class="terminal-body font-mono text-xs">
               <div class="text-[var(--text-dim)]">$ <span class="text-[var(--green)]">ollama serve</span></div>
-              <div class="mt-1 text-[var(--cyan)] text-xs">Ollama running on :11434</div>
+              <div class="mt-1 text-[var(--cyan)]">Ollama running on :11434</div>
               <div class="mt-3 text-[var(--text-dim)]">$ <span class="text-[var(--green)]">claude --model kimi-k2.5:cloud</span></div>
               <div class="mt-1 text-[var(--purple)]">Welcome to Claude Code</div>
-              <div class="text-[var(--text-dim)] text-xs">Model: <span class="text-[var(--green)]">kimi-k2.5:cloud</span></div>
-              <div class="text-[var(--text-dim)] text-xs">Backend: <span class="text-[var(--amber)]">Ollama :11434</span></div>
-              <div class="mt-3 text-[var(--text-dim)]">> How do I implement a REST API in Node.js?<span class="cursor"></span></div>
+              <div class="text-[var(--text-dim)]">Model: <span class="text-[var(--green)]">kimi-k2.5:cloud</span></div>
+              <div class="text-[var(--text-dim)]">Backend: <span class="text-[var(--amber)]">Ollama :11434</span></div>
+              <div class="mt-3 text-[var(--text-dim)]">&gt; How do I build a REST API in Node.js?<span class="cursor"></span></div>
             </div>
           </div>
         </div>
@@ -658,20 +815,85 @@
   </header>
 
   <!-- STATS BAR -->
-  <section class="relative z-10 pb-16 sm:pb-24 px-4 sm:px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="reveal glass p-6 sm:p-8 grid grid-cols-3 gap-4 sm:gap-8 text-center">
+  <section class="relative z-10 pb-12 sm:pb-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal glass p-5 sm:p-8 grid grid-cols-3 gap-3 sm:gap-8 text-center">
         <div>
-          <div class="text-2xl sm:text-3xl font-black gradient-text mb-1">6</div>
-          <div class="text-[10px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">Simple Steps</div>
+          <div class="stats-value text-2xl sm:text-3xl font-black gradient-text mb-1">6</div>
+          <div class="stats-label text-[9px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">Simple Steps</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-black gradient-text mb-1">100%</div>
-          <div class="text-[10px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">Local & Free</div>
+          <div class="stats-value text-2xl sm:text-3xl font-black gradient-text mb-1">100%</div>
+          <div class="stats-label text-[9px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">Local & Free</div>
         </div>
         <div>
-          <div class="text-2xl sm:text-3xl font-black gradient-text mb-1">4GB+</div>
-          <div class="text-[10px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">RAM Needed</div>
+          <div class="stats-value text-2xl sm:text-3xl font-black gradient-text mb-1">4GB+</div>
+          <div class="stats-label text-[9px] sm:text-xs text-[var(--text-dim)] uppercase tracking-widest">RAM Needed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-sm text-[10px] text-[var(--purple)] uppercase tracking-widest mb-4">Why This Setup</div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black mb-3 tracking-tight">
+          <span class="gradient-text">Key Features</span>
+        </h2>
+        <p class="text-sm text-[var(--text-dim)] max-w-sm mx-auto">Everything you need to run AI coding on Android.</p>
+      </div>
+
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(0,229,255,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">Runs on Android</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Full AI coding environment inside Termux — no root, no PC required.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(0,255,136,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">Ollama Backend</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Ollama acts as the local LLM server. Claude Code talks to it on port 11434.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(167,139,250,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"></path></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">Kimi K2.5 Cloud</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Uses the powerful Kimi K2.5 cloud model — smart, fast, and free to pull.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(244,114,182,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">Claude Code CLI</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Anthropic's official coding CLI, installed via npm and pointed at Ollama.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(251,191,36,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">6-Step Setup</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">Copy-paste commands. Up and running in under 10 minutes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="w-9 h-9 rounded-xl bg-[rgba(0,229,255,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-2">Zero API Cost</h3>
+          <p class="text-xs text-[var(--text-dim)] leading-relaxed">No Anthropic API key needed. Ollama handles authentication locally.</p>
         </div>
       </div>
     </div>
@@ -680,47 +902,47 @@
   <div class="section-divider"></div>
 
   <!-- SETUP SECTION -->
-  <section id="setup" class="py-20 sm:py-28 px-4 sm:px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14 reveal">
+  <section id="setup" class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-sm text-[10px] text-[var(--cyan)] uppercase tracking-widest mb-4">Installation</div>
-        <h2 class="text-3xl sm:text-5xl font-black mb-4 tracking-tight">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black mb-3 tracking-tight">
           <span class="gradient-text">Setup Guide</span>
         </h2>
-        <p class="text-sm text-[var(--text-dim)] max-w-md mx-auto">Copy, paste, done. Get running in minutes on your Android phone.</p>
+        <p class="text-xs sm:text-sm text-[var(--text-dim)] max-w-sm mx-auto">Copy, paste, done. Get running in minutes on your Android phone.</p>
       </div>
 
       <!-- Requirements -->
-      <div class="reveal mb-14 glass p-5 sm:p-6 border-l-2 border-l-[var(--amber)]">
+      <div class="reveal mb-10 glass p-4 sm:p-6 border-l-2 border-l-[var(--amber)]">
         <h3 class="text-sm font-bold text-[var(--amber)] mb-3 flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
           Requirements
         </h3>
-        <div class="flex flex-col sm:flex-row gap-3 text-xs text-[var(--text-dim)]">
-          <span class="flex items-center gap-2 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Android phone (4GB+ RAM)</span>
-          <span class="flex items-center gap-2 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Stable internet</span>
-          <span class="flex items-center gap-2 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>Termux (F-Droid)</span>
+        <div class="flex flex-wrap gap-2 text-xs text-[var(--text-dim)]">
+          <span class="flex items-center gap-1.5 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)] flex-shrink-0"></span>Android (4GB+ RAM)</span>
+          <span class="flex items-center gap-1.5 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)] flex-shrink-0"></span>Stable internet</span>
+          <span class="flex items-center gap-1.5 glass-sm px-3 py-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)] flex-shrink-0"></span>Termux (F-Droid)</span>
         </div>
       </div>
 
       <!-- Part 1 Header -->
-      <div class="reveal mb-8 flex items-center gap-3">
-        <div class="w-1 h-8 bg-[var(--green)] rounded-full"></div>
+      <div class="reveal mb-6 flex items-center gap-3">
+        <div class="w-1 h-7 bg-[var(--green)] rounded-full flex-shrink-0"></div>
         <div>
           <span class="text-sm font-bold text-[var(--green)]">Part 1</span>
-          <span class="text-[var(--text-dim)] text-sm ml-2">-- Install Ollama (Termux)</span>
+          <span class="text-[var(--text-dim)] text-sm ml-2">— Install Ollama (Termux)</span>
         </div>
       </div>
 
       <!-- Step 1 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-10">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(0,229,255,0.1)] text-[var(--cyan)] border border-[rgba(0,229,255,0.15)]">01</div>
           <div class="w-[1px] flex-1 bg-gradient-to-b from-[rgba(0,229,255,0.15)] to-transparent mt-3"></div>
         </div>
-        <div class="flex-1 pb-2">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Update & Install Dependencies</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">Update Termux packages and install required dependencies.</p>
+        <div class="flex-1 min-w-0 pb-2">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Update &amp; Install Dependencies</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">Update Termux packages and install required dependencies.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -747,14 +969,14 @@
       </div>
 
       <!-- Step 2 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-10">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(0,229,255,0.1)] text-[var(--cyan)] border border-[rgba(0,229,255,0.15)]">02</div>
           <div class="w-[1px] flex-1 bg-gradient-to-b from-[rgba(0,229,255,0.15)] to-transparent mt-3"></div>
         </div>
-        <div class="flex-1 pb-2">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Start Ollama Server</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">Launch the Ollama LLM server on port 11434.</p>
+        <div class="flex-1 min-w-0 pb-2">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Start Ollama Server</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">Launch the Ollama LLM server on port 11434.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -773,14 +995,14 @@
       </div>
 
       <!-- Step 3 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-10">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(167,139,250,0.1)] text-[var(--purple)] border border-[rgba(167,139,250,0.15)]">03</div>
           <div class="w-[1px] flex-1 bg-gradient-to-b from-[rgba(167,139,250,0.15)] to-transparent mt-3"></div>
         </div>
-        <div class="flex-1 pb-2">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Download Kimi Model</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">Pull the Kimi K2.5 cloud model. Requires strong internet connection.</p>
+        <div class="flex-1 min-w-0 pb-2">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Download Kimi Model</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">Pull the Kimi K2.5 cloud model. Requires strong internet connection.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -793,8 +1015,8 @@
                 <code class="cmd-text"><span class="cmd-prefix">$</span>ollama pull kimi-k2.5:cloud</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
-              <div class="mt-2 text-[var(--amber)] text-xs flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <div class="mt-2 text-[var(--amber)] text-xs flex items-start gap-2">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="flex-shrink-0 mt-0.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                 Requires strong internet (cloud model)
               </div>
             </div>
@@ -803,23 +1025,23 @@
       </div>
 
       <!-- Part 2 Header -->
-      <div class="reveal mb-8 mt-6 flex items-center gap-3">
-        <div class="w-1 h-8 bg-[var(--purple)] rounded-full"></div>
+      <div class="reveal mb-6 mt-4 flex items-center gap-3">
+        <div class="w-1 h-7 bg-[var(--purple)] rounded-full flex-shrink-0"></div>
         <div>
           <span class="text-sm font-bold text-[var(--purple)]">Part 2</span>
-          <span class="text-[var(--text-dim)] text-sm ml-2">-- Install Claude Code (Termux)</span>
+          <span class="text-[var(--text-dim)] text-sm ml-2">— Install Claude Code (Termux)</span>
         </div>
       </div>
 
       <!-- Step 4 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-10">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(0,255,136,0.1)] text-[var(--green)] border border-[rgba(0,255,136,0.15)]">04</div>
           <div class="w-[1px] flex-1 bg-gradient-to-b from-[rgba(0,255,136,0.15)] to-transparent mt-3"></div>
         </div>
-        <div class="flex-1 pb-2">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Install Claude Code</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">Install the Anthropic CLI globally via npm.</p>
+        <div class="flex-1 min-w-0 pb-2">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Install Claude Code</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">Install the Anthropic CLI globally via npm.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -838,14 +1060,14 @@
       </div>
 
       <!-- Step 5 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-10">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-8">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(251,191,36,0.1)] text-[var(--amber)] border border-[rgba(251,191,36,0.15)]">05</div>
           <div class="w-[1px] flex-1 bg-gradient-to-b from-[rgba(251,191,36,0.15)] to-transparent mt-3"></div>
         </div>
-        <div class="flex-1 pb-2">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Configure Ollama Connection</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">Set environment variables to connect Claude Code to Ollama.</p>
+        <div class="flex-1 min-w-0 pb-2">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Configure Ollama Connection</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">Set environment variables to connect Claude Code to Ollama.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -864,13 +1086,13 @@
       </div>
 
       <!-- Step 6 -->
-      <div class="reveal flex gap-4 sm:gap-6 mb-4">
-        <div class="flex flex-col items-center">
+      <div class="reveal flex gap-3 sm:gap-5 mb-4">
+        <div class="flex flex-col items-center flex-shrink-0">
           <div class="step-num bg-[rgba(244,114,182,0.1)] text-[var(--pink)] border border-[rgba(244,114,182,0.15)]">06</div>
         </div>
-        <div class="flex-1">
-          <h3 class="text-lg sm:text-xl font-bold mb-2">Run Claude Code with Kimi</h3>
-          <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-4">You're ready. Launch Claude Code with the Kimi model.</p>
+        <div class="flex-1 min-w-0">
+          <h3 class="text-base sm:text-lg font-bold mb-1">Run Claude Code with Kimi</h3>
+          <p class="text-xs text-[var(--text-dim)] mb-3">You're ready. Launch Claude Code with the Kimi model.</p>
           <div class="terminal">
             <div class="terminal-bar">
               <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -883,10 +1105,10 @@
                 <code class="cmd-text"><span class="cmd-prefix">$</span>claude --model kimi-k2.5:cloud</code>
                 <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
               </div>
-              <div class="mt-4 text-[var(--cyan)] text-xs space-y-1">
-                <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Connected to Ollama :11434</div>
-                <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Model: kimi-k2.5:cloud</div>
-                <div class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ready to code<span class="cursor"></span></div>
+              <div class="mt-3 text-[var(--cyan)] text-xs space-y-1">
+                <div class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Connected to Ollama :11434</div>
+                <div class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Model: kimi-k2.5:cloud</div>
+                <div class="flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ready to code<span class="cursor"></span></div>
               </div>
             </div>
           </div>
@@ -898,42 +1120,42 @@
   <div class="section-divider"></div>
 
   <!-- ARCHITECTURE -->
-  <section id="architecture" class="py-20 sm:py-28 px-4 sm:px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14 reveal">
+  <section id="architecture" class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-sm text-[10px] text-[var(--green)] uppercase tracking-widest mb-4">Architecture</div>
-        <h2 class="text-3xl sm:text-5xl font-black mb-4 tracking-tight">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black mb-3 tracking-tight">
           <span class="gradient-text">System Overview</span>
         </h2>
-        <p class="text-sm text-[var(--text-dim)]">How the pieces connect on your phone.</p>
+        <p class="text-xs sm:text-sm text-[var(--text-dim)]">How the pieces connect on your phone.</p>
       </div>
 
       <!-- Architecture diagram -->
-      <div class="reveal terminal mb-12">
+      <div class="reveal terminal mb-10">
         <div class="terminal-bar">
           <div class="terminal-dot" style="background:#ff5f57;"></div>
           <div class="terminal-dot" style="background:#febc2e;"></div>
           <div class="terminal-dot" style="background:#28c840;"></div>
           <span class="text-[10px] text-[var(--text-dim)] ml-2 font-mono">system-diagram</span>
         </div>
-        <div class="terminal-body text-sm leading-loose font-mono">
-          <div class="text-[var(--cyan)] font-bold text-base">Termux</div>
-          <div class="text-[var(--text-dim)] ml-4 mt-1">&#9500;&#8251; Ollama (LLM Server :11434)</div>
-          <div class="text-[var(--text-dim)] ml-4">&#9492;&#8251; Claude Code (AI CLI)</div>
-          <div class="mt-4 text-[var(--green)] font-medium">Claude Code &#8594; sends requests to Ollama</div>
+        <div class="terminal-body text-xs leading-loose font-mono">
+          <div class="text-[var(--cyan)] font-bold text-sm">Termux</div>
+          <div class="text-[var(--text-dim)] ml-4 mt-1">├── Ollama (LLM Server :11434)</div>
+          <div class="text-[var(--text-dim)] ml-4">└── Claude Code (AI CLI)</div>
+          <div class="mt-3 text-[var(--green)] font-medium">Claude Code → sends requests to Ollama</div>
           <div class="text-[var(--text-dim)] text-xs">Entire system runs locally on your phone</div>
         </div>
       </div>
 
-      <!-- Usage -->
-      <div class="text-center mb-10 reveal">
+      <!-- Usage header -->
+      <div class="text-center mb-8 reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-sm text-[10px] text-[var(--purple)] uppercase tracking-widest mb-4">Workflow</div>
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
           <span class="gradient-text">Daily Usage</span>
         </h2>
       </div>
 
-      <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+      <div class="reveal usage-grid mb-10">
         <div class="terminal">
           <div class="terminal-bar">
             <div class="terminal-dot" style="background:#ff5f57;"></div>
@@ -968,16 +1190,16 @@
       </div>
 
       <!-- Important Notes -->
-      <div class="reveal glass p-5 sm:p-6 border-l-2 border-l-[var(--amber)]">
+      <div class="reveal glass p-4 sm:p-6 border-l-2 border-l-[var(--amber)]">
         <h3 class="text-sm font-bold text-[var(--amber)] mb-3 flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
           Important Notes
         </h3>
         <ul class="text-xs text-[var(--text-dim)] space-y-2">
-          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Keep Ollama running before using Claude Code</li>
-          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> <code class="text-[var(--cyan)] font-mono">:cloud</code> models require internet (not fully offline)</li>
-          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Performance depends on network + device</li>
-          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5">&#9888;</span> Close background apps for stability</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5 flex-shrink-0">⚠</span> Keep Ollama running before using Claude Code</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5 flex-shrink-0">⚠</span> <code class="text-[var(--cyan)] font-mono">:cloud</code> models require internet (not fully offline)</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5 flex-shrink-0">⚠</span> Performance depends on network + device</li>
+          <li class="flex items-start gap-2"><span class="text-[var(--amber)] mt-0.5 flex-shrink-0">⚠</span> Close background apps for stability</li>
         </ul>
       </div>
     </div>
@@ -986,58 +1208,58 @@
   <div class="section-divider"></div>
 
   <!-- TROUBLESHOOTING -->
-  <section id="troubleshoot" class="py-20 sm:py-28 px-4 sm:px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14 reveal">
+  <section id="troubleshoot" class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-sm text-[10px] text-[var(--pink)] uppercase tracking-widest mb-4">Support</div>
-        <h2 class="text-3xl sm:text-5xl font-black mb-4 tracking-tight">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black mb-3 tracking-tight">
           <span class="gradient-text-warm">Troubleshooting</span>
         </h2>
-        <p class="text-sm text-[var(--text-dim)]">Common issues and quick fixes.</p>
+        <p class="text-xs sm:text-sm text-[var(--text-dim)]">Common issues and quick fixes.</p>
       </div>
 
-      <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="reveal trouble-grid">
         <div class="feature-card">
-          <div class="w-10 h-10 rounded-xl bg-[rgba(244,114,182,0.1)] flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <div class="w-9 h-9 rounded-xl bg-[rgba(244,114,182,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
           </div>
-          <h3 class="font-bold text-[var(--text)] mb-3">Claude Cannot Connect to Ollama</h3>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-3">Cannot Connect to Ollama</h3>
           <ul class="text-xs text-[var(--text-dim)] space-y-2">
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ensure <code class="text-[var(--green)] font-mono">ollama serve</code> is running</li>
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Check port 11434 is accessible</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ensure <code class="text-[var(--green)] font-mono">ollama serve</code> is running</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Check port 11434 is accessible</li>
           </ul>
         </div>
 
         <div class="feature-card">
-          <div class="w-10 h-10 rounded-xl bg-[rgba(251,191,36,0.1)] flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <div class="w-9 h-9 rounded-xl bg-[rgba(251,191,36,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
           </div>
-          <h3 class="font-bold text-[var(--text)] mb-3">Model Pull Fails</h3>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-3">Model Pull Fails</h3>
           <ul class="text-xs text-[var(--text-dim)] space-y-2">
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Check your internet connection</li>
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Retry with <code class="text-[var(--green)] font-mono">ollama pull kimi-k2.5:cloud</code></li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Check your internet connection</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Retry: <code class="text-[var(--green)] font-mono">ollama pull kimi-k2.5:cloud</code></li>
           </ul>
         </div>
 
         <div class="feature-card">
-          <div class="w-10 h-10 rounded-xl bg-[rgba(167,139,250,0.1)] flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <div class="w-9 h-9 rounded-xl bg-[rgba(167,139,250,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
           </div>
-          <h3 class="font-bold text-[var(--text)] mb-3">Slow Performance</h3>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-3">Slow Performance</h3>
           <ul class="text-xs text-[var(--text-dim)] space-y-2">
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Close background apps for more RAM</li>
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Use a stable WiFi connection</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Close background apps for more RAM</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Use a stable WiFi connection</li>
           </ul>
         </div>
 
         <div class="feature-card">
-          <div class="w-10 h-10 rounded-xl bg-[rgba(0,229,255,0.1)] flex items-center justify-center mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
+          <div class="w-9 h-9 rounded-xl bg-[rgba(0,229,255,0.1)] flex items-center justify-center mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
           </div>
-          <h3 class="font-bold text-[var(--text)] mb-3">Claude Code Not Found</h3>
+          <h3 class="font-bold text-sm text-[var(--text)] mb-3">Claude Code Not Found</h3>
           <ul class="text-xs text-[var(--text-dim)] space-y-2">
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ensure npm global bin is in your PATH</li>
-            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Reinstall with <code class="text-[var(--green)] font-mono">npm i -g @anthropic-ai/claude-code</code></li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ensure npm global bin is in PATH</li>
+            <li class="flex items-start gap-2"><svg class="text-[var(--cyan)] mt-0.5 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Reinstall: <code class="text-[var(--green)] font-mono">npm i -g @anthropic-ai/claude-code</code></li>
           </ul>
         </div>
       </div>
@@ -1047,19 +1269,19 @@
   <div class="section-divider"></div>
 
   <!-- CTA -->
-  <section class="py-20 sm:py-28 px-4 sm:px-6 relative z-10">
-    <div class="max-w-3xl mx-auto text-center reveal">
-      <div class="glass p-10 sm:p-16 relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-[var(--cyan)] rounded-full filter blur-[160px] opacity-[0.06] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-1/4 w-60 h-60 bg-[var(--purple)] rounded-full filter blur-[120px] opacity-[0.05] pointer-events-none"></div>
+  <section class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <div class="glass p-8 sm:p-14 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[var(--cyan)] rounded-full filter blur-[160px] opacity-[0.06] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-1/4 w-48 h-48 bg-[var(--purple)] rounded-full filter blur-[120px] opacity-[0.05] pointer-events-none"></div>
 
-        <h2 class="text-2xl sm:text-4xl font-black mb-4 relative tracking-tight">
-          Ready to Code <span class="gradient-text">with Kimi</span>?
+        <h2 class="text-xl sm:text-3xl font-black mb-3 relative tracking-tight">
+          Ready to Code <span class="gradient-text">with Claude Code</span>?
         </h2>
-        <p class="text-sm text-[var(--text-dim)] mb-10 relative">Turn your Android into an AI-powered coding machine.</p>
+        <p class="text-xs sm:text-sm text-[var(--text-dim)] mb-8 relative">Turn your Android into an AI-powered coding machine.</p>
         <div class="relative">
-          <a href="#setup" class="cta-btn cta-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <a href="#setup" class="cta-btn cta-primary w-full sm:w-auto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             Start Building Now
           </a>
         </div>
@@ -1068,19 +1290,19 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-[var(--border)] py-10 sm:py-14 px-4 sm:px-6 relative z-10">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+  <footer class="border-t border-[var(--border)] py-8 sm:py-12 px-4 sm:px-6 relative z-10">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
       <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[var(--cyan)] to-[var(--green)] flex items-center justify-center">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-[var(--cyan)] to-[var(--green)] flex items-center justify-center">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5" stroke-linecap="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         </div>
         <span class="font-bold text-sm">
           <span class="text-[var(--cyan)]">Termux</span><span class="text-[var(--green)]">Ollama</span>
         </span>
       </div>
-      <div class="flex items-center gap-8 text-xs text-[var(--text-dim)]">
+      <div class="flex items-center gap-6 text-xs text-[var(--text-dim)]">
         <a href="https://github.com/Johndevils" target="_blank" rel="noopener" class="hover:text-[var(--cyan)] transition-colors flex items-center gap-1">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           GitHub
         </a>
         <a href="#setup" class="hover:text-[var(--cyan)] transition-colors">Setup</a>
@@ -1106,7 +1328,7 @@
 
     const createParticles = () => {
       particles = [];
-      const count = Math.min(Math.floor(w * h / 15000), 80);
+      const count = Math.min(Math.floor(w * h / 18000), 60);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * w,
@@ -1121,133 +1343,111 @@
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, w, h);
-
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-
         if (p.x < 0) p.x = w;
         if (p.x > w) p.x = 0;
         if (p.y < 0) p.y = h;
         if (p.y > h) p.y = 0;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(0, 229, 255, ${p.opacity})`;
         ctx.fill();
-
-        // Draw connections
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 150) {
+          if (dist < 130) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 229, 255, ${0.03 * (1 - dist / 150)})`;
+            ctx.strokeStyle = `rgba(0, 229, 255, ${0.03 * (1 - dist / 130)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
       }
-
       requestAnimationFrame(drawParticles);
     };
 
     resize();
     createParticles();
     drawParticles();
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
-    });
+    window.addEventListener('resize', () => { resize(); createParticles(); });
 
-    // Copy command to clipboard
+    // Copy command
     const copyCmd = (btn) => {
       const block = btn.closest('.cmd-block');
       const code = block.querySelector('.cmd-text');
       const text = code.textContent.replace(/^\$\s*/, '').trim();
-
-      navigator.clipboard.writeText(text).then(() => {
+      const done = () => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
         showToast('Copied to clipboard');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
-      }).catch(() => {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        showToast('Copied to clipboard');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
-      });
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+      } else {
+        fallbackCopy(text, done);
+      }
     };
 
-    // Toast notification
-    const showToast = (message) => {
+    const fallbackCopy = (text, cb) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e) {}
+      document.body.removeChild(ta);
+    };
+
+    // Toast
+    const showToast = (msg) => {
       const toast = document.getElementById('toast');
-      toast.textContent = message;
+      toast.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2500);
     };
 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
     // Mobile menu
     const toggleMobileMenu = () => {
-      const menu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('mobileOverlay');
-      const btn = document.querySelector('.hamburger');
-      menu.classList.toggle('open');
-      overlay.classList.toggle('show');
-      btn.classList.toggle('active');
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('mobileOverlay').classList.toggle('show');
+      document.querySelector('.hamburger').classList.toggle('active');
     };
 
     const closeMobileMenu = () => {
-      const menu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('mobileOverlay');
-      const btn = document.querySelector('.hamburger');
-      menu.classList.remove('open');
-      overlay.classList.remove('show');
-      btn.classList.remove('active');
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('mobileOverlay').classList.remove('show');
+      document.querySelector('.hamburger').classList.remove('active');
     };
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) closeMobileMenu();
+    });
   </script>
 </body>
 </html>
