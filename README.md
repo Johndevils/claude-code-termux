@@ -4,7 +4,7 @@
 
 > A lightweight setup to turn your Android device into a local AI-powered coding environment using Termux.
 
-Live site: [claude-code-termux](https://johndevils.github.io/claude-code-termux/)
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Live_-claude--code--termux-0366d6?style=for-the-badge&logo=github)](https://johndevils.github.io/claude-code-termux/)
 
 ---
 
