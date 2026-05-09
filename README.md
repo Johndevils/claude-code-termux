@@ -55,7 +55,7 @@ ollama pull kimi-k2.5:cloud
 1. Install Claude Code
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+npm install -g @anthropic-ai/claude-code@2.1.112
 ```
 
 2. Configure connection to Ollama
